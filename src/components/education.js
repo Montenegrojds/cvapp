@@ -81,6 +81,14 @@ class Education extends React.Component {
             })
     }
 
+    deleteEducation(id){
+        const educationlist = [...this.state.education];
+        const updatedEducationList = educationlist.filter(edu => edu.id !== id);
+        this.setState({
+            education: updatedEducationList
+        })
+    }
+
     displayAllEducation(){
         return this.state.education.map(
             info => {
@@ -90,7 +98,12 @@ class Education extends React.Component {
                         <li>{info.from}</li>
                         <li>{info.to}</li>
                         <li>{info.degree}</li>
-                        <li>{info.id} <button>X</button> </li>
+                        <li>
+                            {info.id} 
+                            <button onClick={()=> this.deleteEducation(info.id)}>
+                                X
+                            </button> 
+                        </li>
                     </div>
                 )
             }
