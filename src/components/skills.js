@@ -1,4 +1,5 @@
 import React from 'react';
+import uniqid from "uniqid";
 
 class Skills extends React.Component {
     constructor(props){
@@ -6,8 +7,8 @@ class Skills extends React.Component {
         this.state = {
             addskill: '',
             skillList: [
-                {skill: 'c++'},
-                {skill: 'python'},
+                {skill: 'c++', id: uniqid()},
+                {skill: 'python', id: uniqid()},
             ],
             displayFormStatus: false,
             skillupdate:{
@@ -35,7 +36,8 @@ class Skills extends React.Component {
         e.preventDefault();
         this.setState({
             skillupdate: {
-                skill: this.state.addskill
+                skill: this.state.addskill,
+                id: uniqid(),
             },
             displayFormStatus: false
 
@@ -85,10 +87,22 @@ class Skills extends React.Component {
         }
     }
 
+    deleteSkill(id) {
+        const skillListToupdate = [...this.state.skillList];
+        const updatedList = skillListToupdate.filter(info => info.id !== id);
+        this.setState({
+            skillList: updatedList
+        })
+    }
+
     displaySkillList(){
         return this.state.skillList.map(info => {
             return (
-                <li>{info.skill}</li>
+                <li>{info.skill} 
+                    <button onClick={()=> this.deleteSkill(info.id)}>
+                        X
+                    </button>
+                </li>
             )
         })
     }
