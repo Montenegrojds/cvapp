@@ -25,8 +25,9 @@ class Education extends React.Component {
         this.displayEducation = this.displayEducation.bind(this);
         this.addNewEducation = this.addNewEducation.bind(this);
         this.cancelDisplayEducation = this.cancelDisplayEducation.bind(this);
-
-
+        this.updateEducationList = this.updateEducationList.bind(this);
+        this.deleteEducation = this.deleteEducation.bind(this);
+        this.displayAllEducation = this.displayAllEducation.bind(this);
     }
 
     handleChanges = (e)=>{
