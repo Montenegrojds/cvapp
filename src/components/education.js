@@ -100,7 +100,6 @@ class Education extends React.Component {
                         <li>{info.to}</li>
                         <li>{info.degree}</li>
                         <li>
-                            {info.id} 
                             <button onClick={()=> this.deleteEducation(info.id)}>
                                 X
                             </button> 
