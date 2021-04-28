@@ -11,9 +11,7 @@ class Education extends React.Component {
             id: '',
             addNew:false,  
             education: [
-                {
-                nameUniversity:'ucsp',from: '2000', to: '2015', degree: 'cs', id: uniqid()}
-            
+                        
             ],
             educationtoupdate: {
                 

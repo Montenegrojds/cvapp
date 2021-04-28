@@ -7,8 +7,7 @@ class Skills extends React.Component {
         this.state = {
             addskill: '',
             skillList: [
-                {skill: 'c++', id: uniqid()},
-                {skill: 'python', id: uniqid()},
+            
             ],
             displayFormStatus: false,
             skillupdate:{
