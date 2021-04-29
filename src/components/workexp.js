@@ -22,7 +22,8 @@ class WorkExp extends React.Component {
         this.addNewWorkExpe = this.addNewWorkExpe.bind(this);
         this.displayAllWorkexpe = this.displayAllWorkexpe.bind(this);
         this.displayAddForm = this.displayAddForm.bind(this);
-        this.cancelWorkFrom = this.cancelWorkFrom.bind(this);   
+        this.cancelWorkFrom = this.cancelWorkFrom.bind(this); 
+        this.deleteWorkExpe = this.deleteWorkExpe.bind(this);  
     }
 
     handleChanges = (e)=>{
@@ -113,6 +114,14 @@ class WorkExp extends React.Component {
         )}
     }
 
+    deleteWorkExpe(id){
+        const workListToUpdate = [...this.state.workexpe];
+        const updatedWorkList = workListToUpdate.filter(info => info.id !== id);
+        this.setState({
+            workexpe: updatedWorkList
+        })
+    }
+
     displayAllWorkexpe(){
         return this.state.workexpe.map(
             info => {
@@ -123,6 +132,7 @@ class WorkExp extends React.Component {
                             <li>{info.jobRole}</li>
                             <li>{info.jobStartDate}</li>
                             <li>{info.jobEndDate}</li>
+                            <li><button onClick={()=>{this.deleteWorkExpe(info.id)}}>X</button></li>
                         </ul>  
                         <br />
                     </div>
