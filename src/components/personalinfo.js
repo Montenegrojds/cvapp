@@ -1,5 +1,6 @@
 import React from 'react';
-
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 class PersonalInfo extends React.Component {
     constructor(props){
         super(props)
@@ -14,7 +15,6 @@ class PersonalInfo extends React.Component {
             
             displayStatus: false
         }
-
         this.handleChanges= this.handleChanges.bind(this);
         this.onSubmitPI = this.onSubmitPI.bind(this);
         this.displayInfo = this.displayInfo.bind(this);
@@ -59,69 +59,80 @@ class PersonalInfo extends React.Component {
         }
     }
 
+    displayForm(){
+        return(
+            <div>
+                 {/* Personal information*/}
+                 <Form onSubmit={this.onSubmitPI}>
+                    <Form.Group>
+                        <Form.Label htmlFor="firstName">First Name</Form.Label>
+                        <Form.Control type="text" id="firstName" 
+                        onChange={this.handleChanges}
+                        value={this.state.firstName}
+                        name='firstName'
+                        />
+                        <br />
+                        <Form.Label htmlFor="lasttName">Last Name</Form.Label>
+                        <Form.Control type="text" id="lasttName"
+                            onChange={this.handleChanges}
+                            value={this.state.LastName}
+                            name='lastName'
+                        />
+                        <br />
+
+                        <Form.Label htmlFor="occupation">Occupation</Form.Label>
+                        <Form.Control type="text" id="occupation" 
+                            onChange={this.handleChanges}
+                            value={this.state.occupation}
+                            name='occupation'   
+                        />
+                        <br />
+
+                        <Form.Label htmlFor="email">Email</Form.Label>
+                        <Form.Control type="text" id="email" 
+                            onChange={this.handleChanges}
+                            value={this.state.email}
+                            name='email'
+                        />
+                        <br />
+
+                        <Form.Label htmlFor="phone">Phone</Form.Label>
+                        <Form.Control type="text" id="phone" 
+                            onChange={this.handleChanges}
+                            value={this.state.phone}
+                            name='phone'
+                        />
+                        <br />
+
+                        <Form.Label htmlFor="github">Github</Form.Label>
+                        <Form.Control type="text" id="github" 
+                            onChange={this.handleChanges}
+                            value={this.state.github}
+                            name='github'
+                        />
+                        <br />
+
+                        <Button type='submit' variant="primary">Save</Button>
+                    </Form.Group>
+                </Form>
+            </div>
+        )
+    }
+
 
     
     render(){
         return(
-            <div>
-                {/* Personal information*/}
-                <form onSubmit={this.onSubmitPI}>
-                    <label htmlFor="firstName">First Name</label>
-                    <input type="text" id="firstName" 
-                    onChange={this.handleChanges}
-                    value={this.state.firstName}
-                    name='firstName'
-                    />
-                    <br />
-                    <label htmlFor="lasttName">Last Name</label>
-                    <input type="text" id="lasttName"
-                        onChange={this.handleChanges}
-                        value={this.state.LastName}
-                        name='lastName'
-                    />
-                    <br />
-
-                    <label htmlFor="occupation">Occupation</label>
-                    <input type="text" id="occupation" 
-                        onChange={this.handleChanges}
-                        value={this.state.occupation}
-                        name='occupation'   
-                    />
-                    <br />
-
-                    <label htmlFor="email">Email</label>
-                    <input type="text" id="email" 
-                        onChange={this.handleChanges}
-                        value={this.state.email}
-                        name='email'
-                    />
-                    <br />
-
-                    <label htmlFor="phone">Phone</label>
-                    <input type="text" id="phone" 
-                        onChange={this.handleChanges}
-                        value={this.state.phone}
-                        name='phone'
-                    />
-                    <br />
-
-                    <label htmlFor="github">Github</label>
-                    <input type="text" id="github" 
-                        onChange={this.handleChanges}
-                        value={this.state.github}
-                        name='github'
-                    />
-                    <br />
-
-                    <button type='submit'>Save</button>
-                </form>
-                
-                <h1>info go here</h1>
+            <div className="d-grid row ">
+                <div className="col-12 col-lg-6 justify-content-center col-centered"> 
+                    {this.displayForm()}
+                </div>
+                <div className="col-12 col-lg-6 justify-content-center col-centered"> 
                 <ul>
-                    
-                     {this.displayInfo()}
-                </ul>
-                
+                    {this.displayInfo()}
+                    </ul>
+                </div>
+            
                 
             </div>
         )
