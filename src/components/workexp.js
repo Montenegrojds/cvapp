@@ -1,5 +1,7 @@
 import React  from "react";
 import uniqid from "uniqid";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 class WorkExp extends React.Component {
     constructor(props){
@@ -74,42 +76,44 @@ class WorkExp extends React.Component {
         if (this.state.displayWorkFormStatus === true){
         return (
             <div>
-                <form onSubmit={this.onSubmitWorkForm}>
-                    <label htmlFor="companyName">Company:</label>
-                    <input type="text" id="companyName" 
-                        onChange={this.handleChanges}
-                        value={this.state.companyName}
-                        name='companyName'
-                    />
-                    <br /> 
+                <Form onSubmit={this.onSubmitWorkForm}>
+                <Form.Group>
+                        <Form.Label htmlFor="companyName">Company:</Form.Label>
+                        <Form.Control type="text" id="companyName" 
+                            onChange={this.handleChanges}
+                            value={this.state.companyName}
+                            name='companyName'
+                        />
+                        <br /> 
 
-                    <label htmlFor="jobRole">Role:</label>
-                    <input type="text" id="jobRole" 
-                        onChange={this.handleChanges}
-                        value={this.state.jobRole}
-                        name='jobRole'   
-                    />
-                    <br /> 
+                        <Form.Label htmlFor="jobRole">Role:</Form.Label>
+                        <Form.Control type="text" id="jobRole" 
+                            onChange={this.handleChanges}
+                            value={this.state.jobRole}
+                            name='jobRole'   
+                        />
+                        <br /> 
 
-                    <label htmlFor="jobStartDate">From:</label>
-                    <input type="text" id="jobStartDate" 
-                        onChange={this.handleChanges}
-                        value={this.state.jobStartDate}
-                        name='jobStartDate' 
-                    />
-                    
+                        <Form.Label htmlFor="jobStartDate">From:</Form.Label>
+                        <Form.Control type="text" id="jobStartDate" 
+                            onChange={this.handleChanges}
+                            value={this.state.jobStartDate}
+                            name='jobStartDate' 
+                        />
+                        
 
-                    <label htmlFor="jobEndDate">To:</label>
-                    <input type="text" id="jobEndDate" 
-                        onChange={this.handleChanges}
-                        value={this.state.jobEndDate}
-                        name='jobEndDate'
-                    />
-                    <br /> 
+                        <Form.Label htmlFor="jobEndDate">To:</Form.Label>
+                        <Form.Control type="text" id="jobEndDate" 
+                            onChange={this.handleChanges}
+                            value={this.state.jobEndDate}
+                            name='jobEndDate'
+                        />
+                        <br /> 
 
-                    <button type='submit'>Save</button> 
-                    <button onClick={()=> this.cancelWorkFrom()}> cancel</button> 
-                </form>
+                        <Button type='submit' variant="primary">Save</Button> 
+                        <Button onClick={()=> this.cancelWorkFrom()} variant="primary"> cancel</Button> 
+                    </Form.Group>
+                </Form>
             </div>
         )}
     }
@@ -132,7 +136,7 @@ class WorkExp extends React.Component {
                             <li>{info.jobRole}</li>
                             <li>{info.jobStartDate}</li>
                             <li>{info.jobEndDate}</li>
-                            <li><button onClick={()=>{this.deleteWorkExpe(info.id)}}>X</button></li>
+                            <li><Button onClick={()=>{this.deleteWorkExpe(info.id)}} variant="primary">X</Button></li>
                         </ul>  
                         <br />
                     </div>
@@ -151,9 +155,9 @@ class WorkExp extends React.Component {
         return(
             <div>
                 <h3>Work Experience</h3>
-                <button onClick={()=> this.displayAddForm()}>
+                <Button onClick={()=> this.displayAddForm()} variant="primary">
                     +Add
-                </button>
+                </Button>
                 {this.addNewWorkExpe()}
                 {this.displayAllWorkexpe()}
             </div>
